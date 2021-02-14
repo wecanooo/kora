@@ -1,0 +1,26 @@
+APP:
+  NAME: kora
+  RUNMODE: development
+  ADDR: :3000
+  URL: http://localhost:3000
+  KEY: Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5
+
+DB:
+  DEFAULT:
+    CONNECTION: postgres
+    HOST: 127.0.0.1
+    PORT: 5432
+    DATABASE: kora
+    USERNAME: root
+    PASSWORD: secret
+
+REDIS:
+  ADDR:
+  PASSWORD:
+  DATABASE:
+
+LOG:
+  FOLDER:
+  PREFIX:
+  MAXSIZE:
+  MAXAGES:

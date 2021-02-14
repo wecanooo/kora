@@ -1,0 +1,26 @@
+APP:
+  NAME: kora
+  RUNMODE: test
+  ADDR: :3000
+  URL: http://localhost:3000
+  KEY: Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5
+
+DB:
+  DEFAULT:
+    CONNECTION: mysql
+    HOST: 127.0.0.1
+    PORT: 3306
+    DATABASE: kora
+    USERNAME: root
+    PASSWORD: secret
+
+REDIS:
+  ADDR:
+  PASSWORD:
+  DATABASE:
+
+LOG:
+  FOLDER:
+  PREFIX:
+  MAXSIZE:
+  MAXAGES:
