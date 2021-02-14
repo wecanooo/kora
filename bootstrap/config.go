@@ -5,6 +5,7 @@ import (
 	"github.com/wecanooo/kora/core"
 )
 
+// SetupConfig prepares a application config
 func SetupConfig(configFilePath, configFileType string) {
 	config.Setup(configFilePath, configFileType)
 	core.NewConfig()

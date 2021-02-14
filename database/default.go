@@ -8,6 +8,7 @@ import (
 	"github.com/wecanooo/kora/core/pkg/db"
 )
 
+// SetupDefaultDatabase returns a database connection
 func SetupDefaultDatabase() *sql.DB {
 	dsn := db.BuildDatabaseDSN(core.GetConfig().DefaultString("DB.DEFAULT.CONNECTION", "postgres"), db.DatabaseConfig{
 		UserName: core.GetConfig().String("DB.DEFAULT.USERNAME"),

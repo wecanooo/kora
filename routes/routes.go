@@ -4,18 +4,20 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/wecanooo/kora/core"
 	"net/http"
+
+	mw "github.com/wecanooo/kora/routes/middleware"
 )
 
-// Register 라우팅 핸들러 등록
+// Register register middlewares
 func Register(router *core.Application) {
 	if !core.GetConfig().IsDev() {
 		router.Use(middleware.Recover())
 	}
 
 	if core.GetConfig().IsDev() {
-		router.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
-			Format: "${status}   ${method}   ${latency_human}               ${uri}\n",
-		}))
+		router.Use(middleware.Logger())
+	} else {
+		router.Use(mw.ZapLogger(core.GetLog()))
 	}
 
 	router.Pre(middleware.MethodOverrideWithConfig(middleware.MethodOverrideConfig{

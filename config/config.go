@@ -29,7 +29,7 @@ func Setup(configFilePath, configFileType string) {
 	fmt.Printf("\nConfiguration file loaded successfully: %s\n", configFilePath)
 }
 
-// WriteConfig ...
+// WriteConfig creates a config information file
 func WriteConfig(filename string) {
 	viper.WriteConfigAs(filename)
 }

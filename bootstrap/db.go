@@ -6,7 +6,7 @@ import (
 	"github.com/wecanooo/kora/database"
 )
 
-// SetupDB database 연결설정
+// SetupDB prepares database connection and store
 func SetupDB() {
 	sqlDB := database.SetupDefaultDatabase()
 	store := db.NewSQLStore(sqlDB)
@@ -14,7 +14,7 @@ func SetupDB() {
 	core.NewStore(store)
 }
 
-// SetupRedis redis 연결설정
+// SetupRedis prepares a redis client
 func SetupRedis() {
 	client := database.SetupRedis()
 	core.NewRedis(client)

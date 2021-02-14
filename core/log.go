@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-// SetupLog 로그 초기화
+// SetupLog creates a log instance
 func SetupLog() {
 	writeSyncer := getLogWriter()
 	encoder := getEncoder()
@@ -37,8 +37,6 @@ func getLogWriter() zapcore.WriteSyncer {
 	if prefix == "" {
 		_ = fmt.Errorf("logger prefix not found")
 	}
-
-	prefix += "(" + string(GetConfig().GetMode()) + ")"
 
 	timeStr := timeutils.FormatDate(time.Now())
 	filename := path.Join(GetConfig().String("LOG.FOLDER"), prefix+timeStr+".log")

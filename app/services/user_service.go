@@ -19,11 +19,10 @@ func NewUserServices() IUserServices {
 
 // List 사용자 목록 처리
 func (*UserServices) List() ([]db.User, error) {
-	arg := db.ListUsersParams{
+	return core.GetStore().ListUsers(context.Background(), db.ListUsersParams{
 		Limit:  5,
 		Offset: 5,
-	}
-	return core.GetStore().ListUsers(context.Background(), arg)
+	})
 }
 
 

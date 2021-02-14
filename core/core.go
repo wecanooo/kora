@@ -15,7 +15,7 @@ var (
 	appLog            *zap.SugaredLogger
 )
 
-// GetApplication application instance 반환
+// GetApplication return a application instance
 func GetApplication() *Application {
 	if application == nil {
 		panic("application is not initialized")
@@ -23,12 +23,20 @@ func GetApplication() *Application {
 	return application
 }
 
-// GetStore application store 반환
+// GetStore returns a application store interface
 func GetStore() db.Store {
 	if store == nil {
 		panic("store is not initialized")
 	}
 	return store
+}
+
+// GetDefaultConnection returns a database connection
+func GetDefaultConnection() *DBConn {
+	if defaultConnection == nil {
+		panic("database connection is not initialized")
+	}
+	return defaultConnection
 }
 
 // GetConfig application config 반환
@@ -39,10 +47,18 @@ func GetConfig() *AppConfig {
 	return appConfig
 }
 
-// GetLog application logger 반환
+// GetLog returns a application logger instance
 func GetLog() *zap.SugaredLogger {
 	if appLog == nil {
 		panic("application logger is not initialized")
 	}
 	return appLog
+}
+
+// GetRedisClient returns a redis client instance
+func GetRedisClient() *redis.Client {
+	if redisClient == nil {
+		panic("redis client is not initialized")
+	}
+	return redisClient
 }

@@ -6,6 +6,7 @@ import (
 	"github.com/wecanooo/kora/core"
 )
 
+// SetupRedis creates and returns a redis client instance
 func SetupRedis() *redis.Client {
 	client := redis.NewClient(&redis.Options{
 		Addr: 	core.GetConfig().DefaultString("REDIS.ADDR", "localhost"),

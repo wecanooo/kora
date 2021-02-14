@@ -17,7 +17,7 @@ type DatabaseConfig struct {
 
 type connectionName string
 
-// BuildDatabaseDSN 데이터베이스 연결설정
+// BuildDatabaseDSN generates a database connection string
 func BuildDatabaseDSN(connection string, config DatabaseConfig, buildDBName func(string) string) string {
 	if buildDBName != nil {
 		config.DBName = buildDBName(config.DBName)

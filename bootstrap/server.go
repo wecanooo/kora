@@ -7,6 +7,7 @@ import (
 	"github.com/wecanooo/kora/routes"
 )
 
+// SetupServer creates and set a echo server instance
 func SetupServer() {
 	core.SetupLog()
 
@@ -19,6 +20,7 @@ func SetupServer() {
 	core.GetApplication().PrintRoutes(core.GetConfig().String("APP.TEMP_DIR") + "/routes.json")
 }
 
+// RunServer runs echo server
 func RunServer() {
 	fmt.Printf("\napp runmode is %s, %s\n\n", core.GetConfig().GetMode(), core.GetConfig().String("APP.URL"))
 	core.GetApplication().RunServer()

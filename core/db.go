@@ -10,17 +10,17 @@ type DBConn struct {
 	*sql.DB
 }
 
-// NewDBConn database instance 생성
+// NewDBConn creates and set a database instance
 func NewDBConn(conn *sql.DB) {
 	defaultConnection = &DBConn{conn}
 }
 
-// NewStore store interface 생성
+// NewStore set a store interface
 func NewStore(st db.Store) {
 	store = st
 }
 
-// NewRedis redis instance 생성
+// NewRedis set a redis instance
 func NewRedis(r *redis.Client) {
 	redisClient = r
 }

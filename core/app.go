@@ -12,22 +12,22 @@ type Application struct {
 	*echo.Echo
 }
 
-// NewApplication server instance 생성
+// NewApplication creates and set a server instance
 func NewApplication(echo *echo.Echo) {
 	application = &Application{Echo: echo}
 }
 
-// RunServer server 시작
+// RunServer starts a server
 func (app *Application) RunServer() {
 	app.Logger.Fatal(app.Start(GetConfig().DefaultString("APP.ADDR", ":3000")))
 }
 
-// RoutePath 등록된 Route 정보
+// RoutePath returns a reverse routes path
 func (app *Application) RoutePath(name string, params ...interface{}) string {
 	return app.Reverse(name, params...)
 }
 
-// PrintRoutes 등록되어 있는 Route 정보를 출력
+// PrintRoutes prints route information of echo server to a file
 func (app *Application) PrintRoutes(filename string) {
 	routes := make([]*echo.Route, 0)
 	for _, item := range app.Routes() {

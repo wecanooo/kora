@@ -14,14 +14,14 @@ const (
 
 var defaultConfigMap = map[string]interface{}{
 	// app
-	"APP.NAME":          defaultAppName,
-	"APP.VERSION":       "1.0.0",
-	"APP.RUNMODE":       "production",
-	"APP.ADDR":          ":" + defaultAppPort,
-	"APP.URL":           "http://localhost:" + defaultAppPort,
-	"APP.KEY":           "Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5",
-	"APP.TEMP_DIR":      defaultTempDir,
-	"APP.UPLOAD_DIR":    defaultStorage,
+	"APP.NAME":       defaultAppName,
+	"APP.VERSION":    "1.0.0",
+	"APP.RUNMODE":    "production",
+	"APP.ADDR":       ":" + defaultAppPort,
+	"APP.URL":        "http://localhost:" + defaultAppPort,
+	"APP.KEY":        "Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5",
+	"APP.TEMP_DIR":   defaultTempDir,
+	"APP.UPLOAD_DIR": defaultStorage,
 
 	// db
 	"DB.DEFAULT.CONNECTION":           "postgres",
@@ -35,7 +35,7 @@ var defaultConfigMap = map[string]interface{}{
 	"DB.DEFAULT.MAX_IDLE_CONNECTIONS": 20,
 
 	// jwt token
-	"TOKEN.ACCESS_TOKEN_LIFETIME": 60 * time.Minute,
+	"TOKEN.ACCESS_TOKEN_LIFETIME":  60 * time.Minute,
 	"TOKEN.REFRESH_TOKEN_LIFETIME": 60 * 24 * time.Minute,
 
 	// log

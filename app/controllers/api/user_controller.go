@@ -8,11 +8,13 @@ import (
 	"net/http"
 )
 
+// IUserController user controller interface
 type IUserController interface {
 	Index(*context.AppContext) error
 	Show(*context.AppContext, *db.User) error
 }
 
+// UserController user controller
 type UserController struct {
 	UserServices services.IUserServices
 }

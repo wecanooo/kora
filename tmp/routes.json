@@ -1,6 +1,11 @@
 {
-  "count": 1,
+  "count": 2,
   "routes": [
+    {
+      "method": "GET",
+      "path": "/api-doc/*",
+      "name": "api-doc"
+    },
     {
       "method": "GET",
       "path": "/users",
