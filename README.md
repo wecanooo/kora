@@ -1,6 +1,8 @@
 # gorani
 
-echo framework 기반의 go 스켈레톤 프로젝트입니다. go 언어를 이용하여 backend api 서버를 빠르게 만들 수 있도록 하는 것이 목적입니다.
+echo framework 기반의 go 스켈레톤 프로젝트입니다. 
+
+go 언어를 이용하여 backend api 서버를 빠르게 만들 수 있도록 하는 것이 목적입니다.
 
 ## 개발환경을 위한 설치프로그램 및 설정 (Mac OS X 기준)
 
