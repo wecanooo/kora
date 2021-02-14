@@ -2,12 +2,14 @@ package core
 
 import (
 	"github.com/go-redis/redis"
+	db "github.com/wecanooo/kora/app/models"
 	"go.uber.org/zap"
 )
 
 var (
 	application       *Application
 	defaultConnection *DBConn
+	store			  db.Store
 	appConfig         *AppConfig
 	redisClient 	  *redis.Client
 	appLog            *zap.SugaredLogger
