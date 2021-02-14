@@ -43,9 +43,6 @@ test:
 server:
 	go run main.go server
 
-mock:
-	mockgen -package mockdb -destination db/mock/store.go github.com/wecanooo/mars/model Store
-
 help:
 	@echo "make - compile the source code"
 	@echo "make postgres - launch postgres docker container"
@@ -59,7 +56,6 @@ help:
 	@echo "make migratedown - migrate down all migration files"
 	@echo "make migratedown1 - migrate down recent one migration files"
 	@echo "make sqlc - generate type safe go codes by sqlc generate"
-	@echo "make mock - mock data"
 	@echo "make server - start a server"
 
-.PHONY: postgres redis install createdb dropdb migration migrateup migrateup1 migratedown migratedown1 sqlc test server mock help
+.PHONY: postgres redis install createdb dropdb migration migrateup migrateup1 migratedown migratedown1 sqlc test server help
