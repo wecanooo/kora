@@ -1,4 +1,4 @@
-# gorani
+# Kora
 
 echo framework 기반의 go 스켈레톤 프로젝트입니다. 
 
