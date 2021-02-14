@@ -8,4 +8,5 @@ import (
 func SetupConfig(configFilePath, configFileType string) {
 	config.Setup(configFilePath, configFileType)
 	core.NewConfig()
+	config.WriteConfig(core.GetConfig().String("APP.TEMP_DIR") + "/config.json")
 }

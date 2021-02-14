@@ -24,16 +24,15 @@ var defaultConfigMap = map[string]interface{}{
 	"APP.UPLOAD_DIR":    defaultStorage,
 
 	// db
-	"DB.DEFAULT.CONNECTION":           "mysql",
+	"DB.DEFAULT.CONNECTION":           "postgres",
 	"DB.DEFAULT.HOST":                 "127.0.0.1",
-	"DB.DEFAULT.PORT":                 "3306",
+	"DB.DEFAULT.PORT":                 "5432",
 	"DB.DEFAULT.DATABASE":             defaultAppName,
 	"DB.DEFAULT.USERNAME":             "root",
-	"DB.DEFAULT.PASSWORD":             "",
-	"DB.DEFAULT.OPTIONS":              "charset=utf8&parseTime=True&loc=Local",
+	"DB.DEFAULT.PASSWORD":             "secret",
+	"DB.DEFAULT.OPTIONS":              "",
 	"DB.DEFAULT.MAX_OPEN_CONNECTIONS": 100,
 	"DB.DEFAULT.MAX_IDLE_CONNECTIONS": 20,
-	"DB.DEFAULT.AUTO_MIGRATE":         true,
 
 	// jwt token
 	"TOKEN.ACCESS_TOKEN_LIFETIME": 60 * time.Minute,

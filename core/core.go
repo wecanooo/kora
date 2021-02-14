@@ -23,6 +23,14 @@ func GetApplication() *Application {
 	return application
 }
 
+// GetStore application store 반환
+func GetStore() db.Store {
+	if store == nil {
+		panic("store is not initialized")
+	}
+	return store
+}
+
 // GetConfig application config 반환
 func GetConfig() *AppConfig {
 	if appConfig == nil {

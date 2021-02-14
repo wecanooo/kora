@@ -27,6 +27,6 @@ func SetupDefaultDatabase() *sql.DB {
 	conn.SetMaxOpenConns(core.GetConfig().DefaultInt("DB.DEFAULT.MAX_OPEN_CONNECTIONS", 100))
 	conn.SetMaxIdleConns(core.GetConfig().DefaultInt("DB.DEFAULT.MAX_IDLE_CONNECTIONS", 20))
 
-	fmt.Printf("\nDefault atabase connection successful: %s\n", dsn)
+	fmt.Printf("\nDefault database connection successful: %s\n", dsn)
 	return conn
 }

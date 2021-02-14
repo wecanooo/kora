@@ -1,0 +1,37 @@
+{
+  "app": {
+    "addr": ":3000",
+    "key": "Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5",
+    "name": "kora",
+    "runmode": "development",
+    "temp_dir": "tmp",
+    "upload_dir": "storage",
+    "url": "http://localhost:3000",
+    "version": "1.0.0"
+  },
+  "db": {
+    "default": {
+      "connection": "postgres",
+      "database": "kora",
+      "host": "127.0.0.1",
+      "max_idle_connections": 20,
+      "max_open_connections": 100,
+      "options": "",
+      "password": "secret",
+      "port": 5432,
+      "username": "root"
+    }
+  },
+  "log": {
+    "folder": "tmp/logs/zap",
+    "level": "debug",
+    "maxages": 30,
+    "maxbackups": 5,
+    "maxsize": 10,
+    "prefix": "[ZAP_LOGGER]"
+  },
+  "token": {
+    "access_token_lifetime": 3600000000000,
+    "refresh_token_lifetime": 86400000000000
+  }
+}

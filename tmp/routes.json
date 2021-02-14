@@ -1,4 +1,10 @@
 {
-  "count": 0,
-  "routes": []
+  "count": 1,
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/users",
+      "name": "user.index"
+    }
+  ]
 }

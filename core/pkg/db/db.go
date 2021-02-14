@@ -36,7 +36,7 @@ func BuildDatabaseDSN(connection string, config DatabaseConfig, buildDBName func
 		)
 	case "postgres":
 		return fmt.Sprintf(
-			"host=%s port=%s user=%s dbname=%s password=%s options='%s'",
+			"host=%s port=%s user=%s dbname=%s password=%s sslmode=disable options='%s'",
 			config.Host,
 			config.Port,
 			config.UserName,
