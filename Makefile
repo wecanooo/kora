@@ -1,5 +1,16 @@
+APP_NAME = "kora"
+
+default:
+	go build -o ${APP_NAME}
+
 postgres:
 	docker run --name postgres12 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:12-alpine
+
+redis:
+	docker run --name redis -p 6379:6379 -d redis:alpine
+
+install:
+	go mod download
 
 createdb:
 	docker exec -it postgres12 createdb --username=root --owner=root kora_development
@@ -35,4 +46,20 @@ server:
 mock:
 	mockgen -package mockdb -destination db/mock/store.go github.com/wecanooo/mars/model Store
 
-.PHONY: postgres createdb dropdb migration migrateup migrateup1 migratedown migratedown1 sqlc test server mock
+help:
+	@echo "make - compile the source code"
+	@echo "make postgres - launch postgres docker container"
+	@echo "make redis - launch redis docker container"
+	@echo "make install - install dep"
+	@echo "make createdb - create a database"
+	@echo "make dropdb - drop a database"
+	@echo "make migration - create migration file"
+	@echo "make migrateup - migrate up all migration files"
+	@echo "make migrateup1 - migrate up recent one migration file"
+	@echo "make migratedown - migrate down all migration files"
+	@echo "make migratedown1 - migrate down recent one migration files"
+	@echo "make sqlc - generate type safe go codes by sqlc generate"
+	@echo "make mock - mock data"
+	@echo "make server - start a server"
+
+.PHONY: postgres redis install createdb dropdb migration migrateup migrateup1 migratedown migratedown1 sqlc test server mock help

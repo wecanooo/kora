@@ -3,13 +3,13 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/api-doc/*",
-      "name": "api-doc"
+      "path": "/users",
+      "name": "user.index"
     },
     {
       "method": "GET",
-      "path": "/users",
-      "name": "user.index"
+      "path": "/api-doc/*",
+      "name": "api-doc"
     }
   ]
 }
