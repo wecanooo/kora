@@ -8,6 +8,7 @@ import (
 
 type IUserServices interface {
 	List() ([]db.User, error)
+	Create(arg db.CreateUserParams) (db.User, error)
 }
 
 type UserServices struct {}
@@ -25,5 +26,7 @@ func (*UserServices) List() ([]db.User, error) {
 	})
 }
 
-
+func (*UserServices) Create(arg db.CreateUserParams) (db.User, error) {
+	return core.GetStore().CreateUser(context.Background(), arg)
+}
 

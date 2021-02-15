@@ -13,17 +13,18 @@ const (
 	APIPrefix = "/api"
 )
 
-
 func registerAPI(router *core.Application) {
 	if core.GetConfig().IsDev() {
 		router.GET("/api-doc/*", echoSwagger.WrapHandler).Name = "api-doc"
 	}
 
-	router.Group(APIPrefix, middleware.CORS())
+	e := router.Group(APIPrefix, middleware.CORS())
+	v1 := e.Group("/v1")
 
-	user := router.Group("/users")
+	user := v1.Group("/users")
 	{
 		uc := api.NewUserController(services.NewUserServices())
 		router.RegisterHandler(user.GET, "", uc.Index).Name = "user.index"
+		router.RegisterHandler(user.POST, "", uc.Create).Name = "user.create"
 	}
 }

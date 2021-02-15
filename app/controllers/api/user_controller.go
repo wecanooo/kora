@@ -2,40 +2,68 @@ package api
 
 import (
 	db "github.com/wecanooo/kora/app/models"
+	"github.com/wecanooo/kora/app/requests"
 	"github.com/wecanooo/kora/app/serializers"
 	"github.com/wecanooo/kora/app/services"
 	"github.com/wecanooo/kora/core/context"
-	"net/http"
+	"github.com/wecanooo/kora/core/errno"
+	"github.com/wecanooo/kora/core/pkg/password"
 )
 
-// IUserController user controller interface
+// IUserController defines a user controller interface
 type IUserController interface {
 	Index(*context.AppContext) error
 	Show(*context.AppContext, *db.User) error
+	Create(appContext *context.AppContext) error
 }
 
-// UserController user controller
+// UserController defines a user controller struct
 type UserController struct {
 	UserServices services.IUserServices
 }
 
-// NewUserController user controller constructor
+// NewUserController creates a user controller instance
 func NewUserController(s services.IUserServices) IUserController {
 	return &UserController{
 		UserServices: s,
 	}
 }
 
-// Index 사용자 목록 반환
+// Index returns user list
 func (u *UserController) Index(ctx *context.AppContext) error {
 	users, err := u.UserServices.List()
 	if err != nil {
-		return ctx.JSON(http.StatusInternalServerError, err)
+		return errno.DatabaseErr.WithErr(err)
 	}
-	return ctx.JSON(http.StatusOK, serializers.NewUserListSerializer(users))
+	return ctx.SuccessJSON(serializers.NewUserListSerializer(users))
 }
 
-// Show 사용자 정보 반환
+// Show returns a user
 func (u *UserController) Show(ctx *context.AppContext, user *db.User) error {
 	return nil
+}
+
+// Create creates a user
+func (u *UserController) Create(ctx *context.AppContext) error {
+	req := new(requests.CreateUser)
+	if err := ctx.BindValidatorStruct(req); err != nil {
+		return err
+	}
+
+	hashedPassword, err := password.Encrypt(req.Password)
+	if err != nil {
+		return err
+	}
+
+	user, err := u.UserServices.Create(db.CreateUserParams{
+		Email:             req.Email,
+		Username:          req.Username,
+		EncryptedPassword: hashedPassword,
+	})
+
+	if err != nil {
+		errno.DatabaseErr.WithErr(err)
+	}
+
+	return ctx.SuccessJSON(serializers.NewUserSerializer(user))
 }

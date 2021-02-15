@@ -1,15 +1,20 @@
 {
-  "count": 2,
+  "count": 3,
   "routes": [
     {
-      "method": "GET",
-      "path": "/users",
-      "name": "user.index"
+      "method": "POST",
+      "path": "/api/v1/users",
+      "name": "user.create"
     },
     {
       "method": "GET",
       "path": "/api-doc/*",
       "name": "api-doc"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users",
+      "name": "user.index"
     }
   ]
 }

@@ -8,6 +8,7 @@ import (
 
 type Store interface {
 	Querier
+	Exists(ctx context.Context, tableName string, field string, value string) bool
 }
 
 type SQLStore struct {
@@ -39,4 +40,25 @@ func (store *SQLStore) execTx(ctx context.Context, fn func(*Queries) error) erro
 	}
 
 	return tx.Commit()
+}
+
+const exists = `
+SELECT COUNT(id) as count
+FROM $1
+WHERE $2 = $3
+`
+
+func (store *SQLStore) Exists(ctx context.Context, tableName string, field string, value string) bool {
+	rows := store.db.QueryRowContext(ctx, exists, tableName, field, value)
+	var count int
+	err := rows.Scan(&count)
+	if err != nil {
+		return false
+	}
+
+	if count > 0 {
+		return true
+	}
+
+	return false
 }

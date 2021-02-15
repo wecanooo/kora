@@ -28,5 +28,6 @@ func Register(router *core.Application) {
 		RedirectCode: http.StatusMovedPermanently,
 	}))
 
+	registerError(router)
 	registerAPI(router)
 }
