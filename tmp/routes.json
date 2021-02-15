@@ -2,9 +2,9 @@
   "count": 3,
   "routes": [
     {
-      "method": "POST",
+      "method": "GET",
       "path": "/api/v1/users",
-      "name": "user.create"
+      "name": "user.index"
     },
     {
       "method": "GET",
@@ -12,9 +12,9 @@
       "name": "api-doc"
     },
     {
-      "method": "GET",
+      "method": "POST",
       "path": "/api/v1/users",
-      "name": "user.index"
+      "name": "user.create"
     }
   ]
 }
